@@ -101,10 +101,21 @@ int main() {
             case 'm': cout << "delete last element" << endl;
                 nodePtr= head;
                 
-                while(nodePtr) {
+                if(head == nullptr) { break; }
+                
+                if(head->next == nullptr) {
+                    delete head;
+                    break;
+                }
+                
+                while(nodePtr->next) {
                     nodePtr = nodePtr->next;
                 }
-
+                // last node
+                prevPtr = nodePtr->prev;
+                prevPtr->next = nullptr;
+                cout << "deleting last node 0x" << nodePtr << endl;
+                delete nodePtr;
                 
                 break;
                 
@@ -117,6 +128,24 @@ int main() {
                     nodePtr = nodePtr->next;
                 }
                 cout << endl;
+                break;
+                
+            case 'r': cout << "display element backward" << endl;
+                nodePtr = head;
+                if(head == nullptr) break;
+                
+                while(nodePtr->next) {
+                    nodePtr = nodePtr->next;
+                }
+                // last node
+                cout << "node value (reversed) = ";
+                
+                while(nodePtr) {
+                    cout << nodePtr->value << " ";
+                    nodePtr = nodePtr->prev;
+                }
+                cout << endl;
+                
                 break;
                 
             case 'q': cout << "quit" << endl;
