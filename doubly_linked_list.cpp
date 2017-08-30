@@ -11,6 +11,7 @@ struct ListNode {
 };
 
 int main() {
+    
     // Linked List
     ListNode *head = nullptr;
     ListNode *nodePtr = nullptr;
@@ -52,7 +53,7 @@ int main() {
                     newNode->next = head;
                     head->prev = newNode;                    
                     head = newNode;
-                }                
+                }               
                 break;
             
             case 'd':                
@@ -68,7 +69,7 @@ int main() {
                         delete head;
                         head = nullptr;
                     }
-                }                
+                }               
                 break;
                 
             case 'l': 
@@ -92,19 +93,19 @@ int main() {
                     // nodePtr is the end of the node, add the newNode to "next"
                     nodePtr->next = newNode;   
                     newNode->prev = nodePtr;
-                }
-                
+                }                
                 break;
                     
             case 'm': cout << "delete last element" << endl;
-                nodePtr= head;
-                
+                nodePtr= head;                
                 if(head == nullptr) { break; }
-                
+               
                 if(head->next == nullptr) {
-                    delete head;
+                    cout << "delete node 0x" << head << endl;
+                    delete head;      
+                    head = nullptr;
                     break;
-                }
+                }               
                 
                 while(nodePtr->next) {
                     nodePtr = nodePtr->next;
@@ -114,12 +115,115 @@ int main() {
                 prevPtr->next = nullptr;
                 cout << "deleting last node 0x" << nodePtr << endl;
                 delete nodePtr;
+                nodePtr = nullptr;
+                
+                break;
+                
+            case 'n': cout << "add node after an elem: " << endl;
+                if(head == nullptr) break;
+                cout << "enter a value: ";
+                cin >> val;
+                
+                newNode = new ListNode;
+                newNode->value = val;
+                newNode->prev = nullptr;
+                newNode->next = nullptr;
+                cout << "new node created: 0x" << newNode << " value=" << val << endl;
+                
+                // only one node
+                if(head->next == nullptr) {
+                    if(head->value < val) {
+                        head->next = newNode;
+                        newNode->prev = head;
+                        break;
+                    }
+                    else {
+                        // delete the newNode to avoid memory leak
+                        cout << "val not satisfied, delete newNode 0x" << newNode << endl;
+                        delete newNode;
+                        newNode = nullptr;
+                        break;
+                    }
+                }
+                
+                // more than 2 nodes in the middle
+                nodePtr= head;               
+                while(nodePtr->next != nullptr) {
+                    if(nodePtr->value < val) {
+                        ListNode *tmp;
+                        
+                        tmp = nodePtr->next;
+                        nodePtr->next = newNode;
+                        newNode->prev = nodePtr;
+                        newNode->next = tmp;
+                        tmp->prev = newNode;
+                        
+                        break;
+                    }
+                    else {
+                        nodePtr = nodePtr->next;
+                    }
+                }
+                
+                // last node
+                if(nodePtr->value < val) {
+                    nodePtr->next = newNode;
+                    newNode->prev = nodePtr;
+                }
+                else {
+                    // delete the newNode to avoid memory leak
+                    cout << "val not satisfied, delete it 0x" << newNode << endl;
+                    delete newNode;
+                    newNode = nullptr;
+                }
+                
+                break;
+                
+            case 'o': cout << "delete an item that has specified value" << endl;
+                cin >> val;
+                
+                if(head == nullptr) break;
+                
+                if(head->next == nullptr) {
+                    // only one node
+                    if(head->value == val) {
+                        cout << "only one node, delete it 0x" << head << " with value:" << val << endl;
+                        delete head;
+                    }
+                    break;                    
+                }
+                
+                // more than 2 nodes
+                nodePtr = head;
+                while(nodePtr != nullptr) {
+                    if(nodePtr->value == val) {   
+                        if(nodePtr->prev != nullptr) {                        
+                            nodePtr->prev->next = nodePtr->next;
+                        }
+                        else {
+                            // this is the head
+                            head = nodePtr->next;
+                            head->prev = nullptr;                            
+                        }
+                        
+                        if(nodePtr->next != nullptr) {
+                            nodePtr->next->prev = nodePtr->prev;
+                        }
+                        cout << "delete the node 0x" << nodePtr << " with value:" << val << endl;
+                        delete nodePtr;
+                        nodePtr = nullptr;                        
+                        break;
+                    }
+                    else {
+                        nodePtr = nodePtr->next;
+                    }   
+                }
                 
                 break;
                 
             case 'p': cout << "display element forward" << endl;
                 nodePtr = head;
-                cout << "node value= ";
+                cout << "node value = ";
                 
                 while(nodePtr) {
                     cout << nodePtr->value << " ";
@@ -129,15 +233,19 @@ int main() {
                 break;
                 
             case 'r': cout << "display element backward" << endl;
+                cout << "node value (reversed) = ";
                 nodePtr = head;
-                if(head == nullptr) break;
+                if(head == nullptr) {
+                    cout << "" << endl;
+                    break;
+                }
                 
+                // traverse to the last node
                 while(nodePtr->next) {
                     nodePtr = nodePtr->next;
                 }
-                // last node
-                cout << "node value (reversed) = ";
                 
+                // last node               
                 while(nodePtr) {
                     cout << nodePtr->value << " ";
                     nodePtr = nodePtr->prev;
@@ -145,7 +253,7 @@ int main() {
                 cout << endl;
                 
                 break;
-                
+                  
             case 'q': cout << "quit" << endl;
                 cout << "deleting all nodes"<< endl;
                 nodePtr = head;               
