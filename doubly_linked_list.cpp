@@ -52,9 +52,8 @@ int main() {
                     newNode->next = head;
                     head->prev = newNode;                    
                     head = newNode;
-                }
-                
-            break;
+                }                
+                break;
             
             case 'd':                
                 cout << "delete first element" << endl;
@@ -69,8 +68,7 @@ int main() {
                         delete head;
                         head = nullptr;
                     }
-                }
-                
+                }                
                 break;
                 
             case 'l': 
@@ -158,6 +156,7 @@ int main() {
                     delete tmp;                    
                 }                
                 break;
+                
             default:
                 cout << "invalid" << endl;
                 break;
