@@ -19,7 +19,7 @@ int main() {
     ListNode *newNode = nullptr;
     int val = 0;
     int elem_val = 0;
-    bool found;
+    bool found = false;
     
     char ch = 'q';
     do {
@@ -110,27 +110,23 @@ int main() {
                 if(head == nullptr) { 
                     cout << "Empty list, nothing to delete" << endl;
                     break; }
-                              
-                if(head->next == nullptr) {
-                    cout << "Delete node=0x" << head << " value=" << head->value << endl;
-                    delete head;      
-                    head = nullptr;
-                    break;
-                }               
-                               
-                while(nodePtr->next) {
+                       
+                while(nodePtr->next) {                                        
                     nodePtr = nodePtr->next;
                 }
                 
-                // nodePtr is the last node                 
-                prevPtr = nodePtr->prev;
-                if(prevPtr != nullptr) {
-                    prevPtr->next = nullptr;
-                }  
-                cout << "Delete last node=0x" << nodePtr << " value=" << nodePtr->value << endl;
-                delete nodePtr;
-                nodePtr = nullptr;
-                
+                // Last node
+                if(nodePtr->prev == nullptr) {
+                    // Head and only one node
+                    cout << "Delete node=0x" << head << " value=" << head->value << endl;
+                    head = nullptr;
+                }
+                else {
+                    nodePtr->prev->next = nullptr;
+                    cout << "Delete node=0x" << nodePtr << " value=" << nodePtr->value << endl;
+                    delete nodePtr;
+                    nodePtr = nullptr;                                        
+                }                              
                 break;
                 
             case 'n': cout << "Adds an element after an item of the list:" << endl;              
@@ -205,8 +201,7 @@ int main() {
                             nodePtr = nullptr;                            
                         }
                         else if(nodePtr->prev == nullptr && nodePtr->next == nullptr) {
-                            // The only node : head = nodePtr
-                            // Do nothing
+                            // The only node : head = nodePtr                            
                             cout << "Delete node 0x" << nodePtr << " with value:" << val << endl;
                             delete nodePtr;
                             nodePtr = nullptr; 
