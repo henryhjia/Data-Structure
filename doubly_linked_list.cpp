@@ -19,6 +19,7 @@ int main() {
     ListNode *newNode = nullptr;
     int val = 0;
     int elem_val = 0;
+    bool found;
     
     char ch = 'q';
     do {
@@ -75,7 +76,7 @@ int main() {
                     }
                 }   
                 else {
-                    cout << "Nothing to delete" << endl;    
+                    cout << "Empty list, nothing to delete" << endl;    
                 }
                 break;
                 
@@ -107,7 +108,7 @@ int main() {
             case 'm': cout << "Deletes an element from the end of the list: " << endl;
                 nodePtr= head;                
                 if(head == nullptr) { 
-                    cout << "Nothing to delete" << endl;
+                    cout << "Empty list, nothing to delete" << endl;
                     break; }
                               
                 if(head->next == nullptr) {
@@ -138,13 +139,19 @@ int main() {
                 cout << "Enter a value for existing element:" << endl;
                 cin >> elem_val;
                 
-                if(head == nullptr) break;                                                
+                cout << "Add " << val << " after " << elem_val << endl;
                 
+                found = false;
+                
+                if(head == nullptr) {
+                    cout << "Empty list, nothing to add" << endl;
+                    break;                                                
+                }
                 // Find the node with elem_val
                 nodePtr = head;
                 while(nodePtr != nullptr) {
                     if(nodePtr->value == elem_val) {
-                        
+                        found = true;
                         // Only create  the newNode after we find the elem_val
                         newNode = new ListNode;
                         newNode->value = val;
@@ -164,7 +171,10 @@ int main() {
                         break;
                     }                    
                     nodePtr = nodePtr->next;
-                }               
+                }
+                if(found == false) {
+                    cout << "The element with value=" << elem_val << " is not found, nothing is added" << endl;
+                }
                 break;                                
                 
             case 'o': cout << "Deletes an elemment from the list using the key" << endl;
@@ -172,11 +182,10 @@ int main() {
                 cin >> val;
                 cout << "Delete an item that has value=" << val << endl;
 
-                bool found;
                 found = false;
                 
                 if(head == nullptr) {                    
-                    cout << "Did not find the node with value:" << val << ", nothing to delete" << endl;                    
+                    cout << "Empty list, nothing to delete" << endl;                    
                     break;
                 }
                 
@@ -191,24 +200,33 @@ int main() {
                             // Middle node
                             nodePtr->prev->next = nodePtr->next;
                             nodePtr->next->prev = nodePtr->prev;
+                            cout << "Delete node 0x" << nodePtr << " with value:" << val << endl;
+                            delete nodePtr;
+                            nodePtr = nullptr;                            
                         }
                         else if(nodePtr->prev == nullptr && nodePtr->next == nullptr) {
-                            // The only node
+                            // The only node : head = nodePtr
                             // Do nothing
+                            cout << "Delete node 0x" << nodePtr << " with value:" << val << endl;
+                            delete nodePtr;
+                            nodePtr = nullptr; 
+                            head = nullptr;
                         }
                         else if(nodePtr->prev == nullptr && nodePtr->next != nullptr) {
                             // Head node
                             head = nodePtr->next;
                             nodePtr->next->prev = nullptr;
+                            cout << "Delete node 0x" << nodePtr << " with value:" << val << endl;
+                            delete nodePtr;
+                            nodePtr = nullptr;                            
                         }
                         else if(nodePtr->prev != nullptr && nodePtr->next == nullptr) {
                             // Last node
-                            nodePtr->prev->next = nullptr;
-                        }
-                        
-                        cout << "Delete node 0x" << nodePtr << " with value:" << val << endl;
-                        delete nodePtr;
-                        nodePtr = nullptr;
+                            nodePtr->prev->next = nullptr;    
+                            cout << "Delete node 0x" << nodePtr << " with value:" << val << endl;
+                            delete nodePtr;
+                            nodePtr = nullptr;                            
+                        }                        
                         break;
                     }
                     else {
