@@ -119,6 +119,7 @@ int main() {
                 if(nodePtr->prev == nullptr) {
                     // Head and only one node
                     cout << "Delete node=0x" << head << " value=" << head->value << endl;
+                    delete head;
                     head = nullptr;
                 }
                 else {
