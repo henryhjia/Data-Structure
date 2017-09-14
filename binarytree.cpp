@@ -79,7 +79,7 @@ void insertNode(int num) {
 	  newNode->value = num;
 	  newNode->left = nullptr;
 	  newNode->right = nullptr;
-    cout << "New node created=" << newNode << endl;
+    	  cout << "New node created=" << newNode << endl;
     
 	  if (root != nullptr)
 		  cout << "value inserted=" << num << " root=" << root << " root val=" << root->value << endl;
@@ -87,7 +87,7 @@ void insertNode(int num) {
 		  cout << "value inserted=" << num << " root=nullptr" << endl;
 
 	  insert(root, newNode);
-    cout << "After insert, root=" << root << " root value=" << root->value << endl;
+    	  cout << "After insert, root=" << root << " root value=" << root->value << endl;
 }
 
 // Binary tree
