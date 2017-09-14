@@ -150,7 +150,7 @@ void btree_insert() {
 			cin >> num;
            
 			root = insertme(root, num);
-            cout << "root=" << root << endl;
+            		cout << "root=" << root << endl;
                 
 			break;
 
