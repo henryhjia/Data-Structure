@@ -66,14 +66,14 @@ void insert(TreeNode *&nodePtr, TreeNode *newNode) {
         << " *** just entered insert() ***" << endl;
 	if (nodePtr == nullptr) {
 		nodePtr = newNode;
-        cout << "nodePtr=" << nodePtr << " root=" << root << endl;
+        	cout << "nodePtr=" << nodePtr << " root=" << root << endl;
 	}
 	else if (newNode->value < nodePtr->value) {
-        cout << "nodePtr=" << nodePtr << " nodePtr->left=" << nodePtr->left <<  " root=" << root 
-             << " *** before insert ***" << endl;
+        	cout << "nodePtr=" << nodePtr << " nodePtr->left=" << nodePtr->left <<  " root=" << root 
+             	     << " *** before insert ***" << endl;
 		insert(nodePtr->left, newNode);
-        cout << "nodePtr=" << nodePtr << " nodePtr->left=" << nodePtr->left << " root=" << root 
-             << " *** after insert" << endl;
+        	cout << "nodePtr=" << nodePtr << " nodePtr->left=" << nodePtr->left << " root=" << root 
+             	     << " *** after insert" << endl;
 	}
 	else if (newNode->value > nodePtr->value) {
 		insert(nodePtr->right, newNode);
