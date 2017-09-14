@@ -40,6 +40,20 @@ Please select traversing method
 5
 3
 1
+Delete all node of the tree
+i-insert
+d-delete
+p-print
+q-quit
+Please select traversing method 
+i-insert
+d-delete
+p-print
+q-quit
+Please select traversing method 
+1-preOrder
+2-postOrder
+3-InOrder
 i-insert
 d-delete
 p-print
