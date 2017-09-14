@@ -133,6 +133,14 @@ TreeNode* insertme(TreeNode* nod, int val) {
     return nod;
 }
 
+void deleteme(TreeNode*& root) {
+    if(root != nullptr) {    
+        deleteme(root->left);
+        deleteme(root->right);
+        delete root;
+        root = nullptr;
+    }
+}
 
 // Binary tree
 void btree_insert() {
@@ -155,6 +163,8 @@ void btree_insert() {
 			break;
 
 		case 'd':
+            		cout << "Delete all node of the tree" << endl;   
+            		deleteme(root);				
 			break;
 
 		case 'p':
