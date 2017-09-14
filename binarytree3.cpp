@@ -106,29 +106,29 @@ void btree_insert() {
 		switch (ch) {
 
 		case 'i':
-			  cout << "please enter a value to be inserted: " << endl;
-			  cin >> num;
+			cout << "please enter a value to be inserted: " << endl;
+			cin >> num;
            
-        insertme2(root, num);
-        cout << "root=" << root << endl;
+        		insertme2(root, num);
+        		cout << "root=" << root << endl;
                 
-			  break;
+			break;
 
 		case 'd':
-        cout << "Delete all node of the tree" << endl;   
-        deleteme(root);
-			  break;
+        		cout << "Delete all node of the tree" << endl;   
+        		deleteme(root);
+			break;
 
 		case 'p':
-			  printNode();
-			  break;
+			printNode();
+			break;
 
 		case 'q':
-			  break;
+			break;
 
 		default:
-			  cout << "invlid " << endl;
-			  break;
+			cout << "invlid " << endl;
+			break;
 		}
 	} while (ch != 'q');
     
