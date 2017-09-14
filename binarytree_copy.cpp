@@ -178,22 +178,22 @@ void btree_insert() {
 			cin >> num;
            
 			//root = insertme(root, num);
-            insertme2(root, num);
-            cout << "root=" << root << endl;
+            		insertme2(root, num);
+            		cout << "root=" << root << endl;
                 
 			break;
         case 'c': 
-            cout << "Copy a binary tree:" << endl;
-            TreeNode *copied_node;
-            copied_node = copy_tree(root);
-            cout << "original tree: " << endl;
-            PreOrder(root);
-            cout << "copied tree: " << endl;
-            PreOrder(copied_node);
+            		cout << "Copy a binary tree:" << endl;
+            		TreeNode *copied_node;
+            		copied_node = copy_tree(root);
+            		cout << "original tree: " << endl;
+            		PreOrder(root);
+            		cout << "copied tree: " << endl;
+            		PreOrder(copied_node);
                        
 		case 'd':
-            cout << "Delete all node of the tree" << endl;   
-            deleteme(root);
+            		cout << "Delete all node of the tree" << endl;   
+            		deleteme(root);
 			break;
 
 		case 'p':
