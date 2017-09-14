@@ -1,4 +1,62 @@
 // use *& node as an argument of the recursive function call
+/*
+Result: (node value: 4 2 1)
+i-insert
+d-delete
+p-print
+q-quit
+please enter a value to be inserted: 
+node=0x138cc20 *** new node created ***
+root=0x138cc20
+i-insert
+d-delete
+p-print
+q-quit
+please enter a value to be inserted: 
+node=0x138cc20 node->left=0 ***bef insertme ***
+node=0x138ec90 *** new node created ***
+node=0x138cc20 *** aft insertme ***
+root=0x138cc20
+i-insert
+d-delete
+p-print
+q-quit
+please enter a value to be inserted: 
+node=0x138cc20 node->left=0x138ec90 ***bef insertme ***
+node=0x138ec90 node->left=0 ***bef insertme ***
+node=0x138ecb0 *** new node created ***
+node=0x138ec90 *** aft insertme ***
+node=0x138cc20 *** aft insertme ***
+root=0x138cc20
+i-insert
+d-delete
+p-print
+q-quit
+Please select traversing method 
+1-preOrder
+2-postOrder
+3-InOrder
+4
+2
+1
+i-insert
+d-delete
+p-print
+q-quit
+Delete all node of the tree
+i-insert
+d-delete
+p-print
+q-quit
+Please select traversing method 
+1-preOrder
+2-postOrder
+3-InOrder
+i-insert
+d-delete
+p-print
+q-quit
+*/
 
 #include <iostream>
 
