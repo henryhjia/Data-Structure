@@ -62,15 +62,22 @@ void printNode() {
 // binary tree insert
 // NOTE: Must passing TreeNode *& nodePtr to update root node
 void insert(TreeNode *&nodePtr, TreeNode *newNode) {
-	  if (nodePtr == nullptr) {
-		  nodePtr = newNode;
-	  }
-	  else if (newNode->value < nodePtr->value) {
-		  insert(nodePtr->left, newNode);
-	  }
-	  else if (newNode->value > nodePtr->value) {
-		  insert(nodePtr->right, newNode);
-	  }
+	cout << "nodePtr=" << nodePtr << " newNode=" << newNode << " root=" << root 
+        << " *** just entered insert() ***" << endl;
+	if (nodePtr == nullptr) {
+		nodePtr = newNode;
+        cout << "nodePtr=" << nodePtr << " root=" << root << endl;
+	}
+	else if (newNode->value < nodePtr->value) {
+        cout << "nodePtr=" << nodePtr << " nodePtr->left=" << nodePtr->left <<  " root=" << root 
+             << " *** before insert ***" << endl;
+		insert(nodePtr->left, newNode);
+        cout << "nodePtr=" << nodePtr << " nodePtr->left=" << nodePtr->left << " root=" << root 
+             << " *** after insert" << endl;
+	}
+	else if (newNode->value > nodePtr->value) {
+		insert(nodePtr->right, newNode);
+	}	  
 }
 
 void insertNode(int num) {
