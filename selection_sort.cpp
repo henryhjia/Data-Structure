@@ -77,6 +77,7 @@ void selection_sort(ListNode* head) {
     while(n1 != nullptr) {
         min = n1->value;
         n2 = n1->next;
+	minPtr = n1;
         while(n2 != nullptr) {
             if(n2->value < min) {
                 min = n2->value;
