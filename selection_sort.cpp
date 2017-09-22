@@ -114,7 +114,7 @@ void singlely_linked_list() {
 		cout << "p - print" << endl;
 		cout << "s - search ... " << endl;
 		cout << "f - empty" << endl;
-        cout << "m - ascending selection sort" << endl;
+        	cout << "m - ascending selection sort" << endl;
 		cout << "q - quit" << endl;
 
 		cin >> ch;
@@ -293,10 +293,10 @@ void singlely_linked_list() {
 			}
 			break;
 
-        case 'm':
-            cout << "selection sort" << endl;
-            selection_sort(head);                
-            break;
+        	case 'm':
+            		cout << "selection sort" << endl;
+      	      		selection_sort(head);                
+            		break;
                 
 		case 'q': cout << "quit" << endl;
 			cout << "deleting all nodes" << endl;
