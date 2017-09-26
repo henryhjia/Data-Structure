@@ -7,21 +7,22 @@ struct ListNode {
 	ListNode *next;
 };
 
-ListNode* createNode(int val) {
+ListNode* createNode() {
 	ListNode *new_node = new ListNode;
 	new_node->next = nullptr;
-	new_node->value = val;
-    cout << "newNode: " << new_node << " value=" << val << endl;
+	new_node->value = 0;
+    cout << "newNode: " << new_node << endl;
 	return new_node;
-}
-
-int getLocation(ListNode* node_ptr) {
-	int val = node_ptr->value;
-	return val % 10;
 }
 
 int getHashKey(int num) {   
     return num % 10;
+}
+
+int getLocation(ListNode* node_ptr) {
+    int val = rand() % 100; // 0 -> 99
+	node_ptr->value = val;
+	return getHashKey(val);
 }
 
 void insertNode(ListNode* v[], ListNode *newNode, int index) {
@@ -48,7 +49,7 @@ void insertNode(ListNode* v[], ListNode *newNode, int index) {
 
 void printHashTable(ListNode* v[]) {
 	ListNode *nodePtr = nullptr;
-
+    cout << "Printing Hash Table:" << endl;
 	for (int i = 0; i < 10; i++) {
 		cout << "[" << i << "]: " ;
 		nodePtr = v[i];
@@ -72,7 +73,7 @@ void deleteNode(ListNode* v[], int val) {
         // First node
 	    if (nodePtr->value == val) {
 			v[i] = nodePtr->next;
-            cout << "delete: " << nodePtr;
+            cout << "["<< i <<"]: " << val << " found, delete it: " << nodePtr << endl;
 			delete nodePtr;
 			continue;
 		}
@@ -84,11 +85,14 @@ void deleteNode(ListNode* v[], int val) {
         }        
         
         // Got it
-        if(nodePtr != nullptr) {
+        if(nodePtr != nullptr && nodePtr->value == val) {
             prevPtr->next = nodePtr->next;
-            cout << "delete: " << nodePtr << " value=" << nodePtr->value << endl;
+            cout << "[" << i << "]: " << val << " found, delete it: " << nodePtr << " value=" << nodePtr->value << endl;
             delete nodePtr;
             nodePtr = nullptr;
+        }
+        else {
+            cout << "[" << i << "]: " << val << " not found, nothing to delete" << endl;
         }
     }
 }
@@ -149,9 +153,7 @@ void hash_table() {
 		switch (ch) {
 		case 'a': 
             cout << "add" << endl;
-            cout << "enter a value to insert:" << endl;
-            cin >> num;
-			node = createNode(num);
+			node = createNode();
 			index = getLocation(node);
 			insertNode(arr, node, index);
 
@@ -161,6 +163,7 @@ void hash_table() {
             cout << "enter a value to delete" << endl;
             cin >> num;
             deleteNode(arr, num);
+            printHashTable(arr);
             break;
                 
 		case 'x':
@@ -198,7 +201,7 @@ void hash_table() {
 
 int main() {
     // Complete the code.
-    //hash_table();
+    hash_table();
 	return EXIT_SUCCESS;                
 
 }
