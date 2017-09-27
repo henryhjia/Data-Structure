@@ -1,5 +1,7 @@
 #include <iostream>
 #include <cstdio>
+#include <ctime>
+
 using namespace std;
 
 struct ListNode {
@@ -11,7 +13,7 @@ ListNode* createNode() {
 	ListNode *new_node = new ListNode;
 	new_node->next = nullptr;
 	new_node->value = 0;
-    cout << "newNode: " << new_node << endl;
+    //cout << "newNode: " << new_node << endl;
 	return new_node;
 }
 
@@ -20,7 +22,8 @@ int getHashKey(int num) {
 }
 
 int getLocation(ListNode* node_ptr) {
-    int val = rand() % 100; // 0 -> 99
+    //int val = rand() % 100; // 0 -> 99
+    int val = rand() % 1000;
 	node_ptr->value = val;
 	return getHashKey(val);
 }
@@ -103,7 +106,7 @@ void destroyHashTable(ListNode* v[]) {
         while(nodePtr != nullptr) {
             ListNode *tmp = nodePtr;
             nodePtr = nodePtr->next;
-            cout << "delete: " << tmp << endl;
+            //cout << "delete: " << tmp << endl;
             delete tmp;
             tmp = nullptr;
         }        
@@ -128,6 +131,16 @@ bool searchNode(ListNode* v[], int val) {
     return false;
 }
 
+void batch_insert(ListNode* v[], int num) {
+    ListNode *node = nullptr;
+    int index;
+    
+    for(int i=0; i< num; i++) {
+		node = createNode();
+		index = getLocation(node);
+		insertNode(v, node, index);    
+    }
+}
 
 void hash_table() {
 	cout << "Week 6: Hash Table" << endl;
@@ -135,12 +148,13 @@ void hash_table() {
 	ListNode* arr[10] = {0};
 	ListNode* node = nullptr;
 	int index;
-    int num;
+	int num;
     
 	char ch = 'q';
 	do {
 		cout << "What do you want to do?" << endl;
 		cout << "a - add a node" << endl;
+        cout << "b - batch insert" << endl;
         cout << "d - delete a node" << endl;
 		cout << "x - destroy hash table" << endl;
         cout << "s - seach a node" << endl;
@@ -158,6 +172,13 @@ void hash_table() {
 			insertNode(arr, node, index);
 
 			break;
+              
+            case 'b':
+            cout << "Batch insert" << endl;
+            cout << "How many node do you want to insert?" << endl;
+            cin >> num;                
+            batch_insert(arr, num);
+            break;
                 
 		case 'd':
             cout << "enter a value to delete" << endl;
@@ -171,7 +192,7 @@ void hash_table() {
             destroyHashTable(arr);
             break;
 
-        case 's':
+            case 's':
             cout << "search a node:" << endl;
             cout << "please enter a value:" << endl;
             cin >> num;
@@ -201,7 +222,15 @@ void hash_table() {
 
 int main() {
     // Complete the code.
+    clock_t t1;
+    t1 = clock();
+    
     hash_table();
-	return EXIT_SUCCESS;                
+    
+    clock_t t2 = clock();
+    
+    cout << "Elapsed time=" << (t2-t1)*1.0/CLOCKS_PER_SEC << " seconds" << endl;
+    
+    return EXIT_SUCCESS;                
 
 }
