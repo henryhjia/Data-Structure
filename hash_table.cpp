@@ -14,7 +14,7 @@ ListNode* createNode() {
 	ListNode *new_node = new ListNode;
 	new_node->next = nullptr;
 	new_node->value = 0;
-    //cout << "newNode: " << new_node << endl;
+        //cout << "newNode: " << new_node << endl;
 	return new_node;
 }
 
@@ -30,10 +30,10 @@ int getLocation(ListNode* node_ptr) {
 }
 
 void insertNode(ListNode* v[], ListNode *newNode, int index) {
-	if (v[index] == nullptr) {
-		v[index] = newNode;
-	}
-	else {
+    if (v[index] == nullptr) {
+	v[index] = newNode;
+    }
+    else {
 		ListNode *nodePtr = v[index];
 		ListNode *prevPtr = nullptr;
         /*
@@ -50,25 +50,7 @@ void insertNode(ListNode* v[], ListNode *newNode, int index) {
 			newNode->next = nodePtr;
 		}
         */
-        /*
-        while (nodePtr != nullptr) {
-            if(nodePtr->value < newNode->value) {
-                prevPtr = nodePtr;                  
-            }
-            else {      
-                if(prevPtr != nullptr) {
-                    prevPtr->next = newNode;
-                    newNode->next = nodePtr;
-                }
-                else {
-                    v[index] = newNode;
-                    newNode->next = nodePtr;                    
-                }      
-                prevPtr = nodePtr;
-            }
-            nodePtr = nodePtr->next;
-        }
-        */
+
         while (nodePtr != nullptr) {
             if(nodePtr->value >= newNode->value) {    
                 if(prevPtr != nullptr) {
@@ -87,12 +69,12 @@ void insertNode(ListNode* v[], ListNode *newNode, int index) {
         if(prevPtr->value < newNode->value) {
             prevPtr->next = newNode;
         }
-	}
+    }
 }
 
 void printHashTable(ListNode* v[]) {
 	ListNode *nodePtr = nullptr;
-    cout << "Printing Hash Table:" << endl;
+    	cout << "Printing Hash Table:" << endl;
 	for (int i = 0; i < 10; i++) {
 		cout << "[" << i << "]: " ;
 		nodePtr = v[i];
@@ -100,7 +82,7 @@ void printHashTable(ListNode* v[]) {
 			cout  << nodePtr->value << " ";
 			nodePtr = nodePtr->next;
 		}
-        cout << endl;
+        	cout << endl;
 	}
 }
 
@@ -114,12 +96,12 @@ void deleteNode(ListNode* v[], int val) {
         if(nodePtr == nullptr) continue;
         
         // First node
-	    if (nodePtr->value == val) {
-			v[i] = nodePtr->next;
-            cout << "["<< i <<"]: " << val << " found, delete it: " << nodePtr << endl;
-			delete nodePtr;
-			continue;
-		}
+	if (nodePtr->value == val) {
+		v[i] = nodePtr->next;
+            	cout << "["<< i <<"]: " << val << " found, delete it: " << nodePtr << endl;
+		delete nodePtr;
+		continue;
+	}
         
         // Rest of nodes
         while(nodePtr != nullptr && nodePtr->value != val) {
@@ -260,13 +242,13 @@ void hash_table() {
 	do {
 		cout << "What do you want to do?" << endl;
 		cout << "a - add a node to hash table" << endl;
-        cout << "b - batch insert to hash table" << endl;
-        cout << "c - batch insert to singlely linked list " << endl;
-        cout << "d - delete a node from hash table" << endl;
-        cout << "i - insert node with value to hash table" << endl;
+        	cout << "b - batch insert to hash table" << endl;
+        	cout << "c - batch insert to singlely linked list " << endl;
+        	cout << "d - delete a node from hash table" << endl;
+        	cout << "i - insert node with value to hash table" << endl;
 		cout << "x - destroy hash table" << endl;
-        cout << "s - search a node from hash table" << endl;
-        cout << "t - search a node from list" << endl;
+        	cout << "s - search a node from hash table" << endl;
+       	 	cout << "t - search a node from list" << endl;
 		cout << "p - print hash table" << endl;
 		cout << "q - quit" << endl;
 
@@ -275,97 +257,97 @@ void hash_table() {
 
 		switch (ch) {
 		case 'a': 
-            cout << "Add node to hash table" << endl;
+             		cout << "Add node to hash table" << endl;
 			nodePtr = createNode();
 			index = getLocation(nodePtr);
 			insertNode(arr, nodePtr, index);
 
 			break;
               
-        case 'b':
-            cout << "Batch insert to hash table" << endl;
-            cout << "How many node do you want to insert to the hash table?" << endl;
-            cin >> num;                
-            batch_insert_hashtable(arr, num);
-            break;
+        	case 'b':
+            		cout << "Batch insert to hash table" << endl;
+            		cout << "How many node do you want to insert to the hash table?" << endl;
+            		cin >> num;                
+            		batch_insert_hashtable(arr, num);
+            		break;
               
-        case 'c':                
-            cout << "Batch insert to linked list" << endl;
-            cout << "How many node do you want to insert to the linked list?" << endl;
-            cin >> num;                
-            head = batch_insert_list(num);
-            break;
+        	case 'c':                
+            		cout << "Batch insert to linked list" << endl;
+            		cout << "How many node do you want to insert to the linked list?" << endl;
+            		cin >> num;                
+            		head = batch_insert_list(num);
+            		break;
                 
 		case 'd':
-            cout << "enter a value to delete from hash table" << endl;
-            cin >> num;
-            deleteNode(arr, num);
-            printHashTable(arr);
-            break;
+            		cout << "enter a value to delete from hash table" << endl;
+            		cin >> num;
+            		deleteNode(arr, num);
+            		printHashTable(arr);
+            		break;
                
-        case 'i':
-            {
-                cout << "enter a value to insert to hash table" << endl;
-                cin >> num;
-                nodePtr = new ListNode;
-                nodePtr->value = num;
-                nodePtr->next = nullptr;
-                int hash_key = num % 10;
-                insertNode(arr, nodePtr, hash_key);   
-            }                 
-            break;
+        	case 'i':
+            	{
+                	cout << "enter a value to insert to hash table" << endl;
+                	cin >> num;
+                	nodePtr = new ListNode;
+                	nodePtr->value = num;
+                	nodePtr->next = nullptr;
+                	int hash_key = num % 10;
+                	insertNode(arr, nodePtr, hash_key);   
+		}                 
+            		break;
                   
 		case 'x':
-            cout << "delete hash table" << endl;
-            destroyHashTable(arr);
-            break;
+            		cout << "delete hash table" << endl;
+            		destroyHashTable(arr);
+            		break;
 
-        case 's':
-            {
-                cout << "search a node from hash table:" << endl;
-                cout << "please enter a value:" << endl;
-                cin >> num;
+        	case 's':
+            	{
+                	cout << "search a node from hash table:" << endl;
+                	cout << "please enter a value:" << endl;
+                	cin >> num;
                 
-                clock_t t1;
-                t1 = clock();   
+                	clock_t t1;
+                	t1 = clock();   
                 
-                if(searchNode(arr, num)) {
-                    cout << "node (value=" << num << ") found from hash table" << endl;
-                }
-                else cout << "node (value=" << num << ") not found from hash table" << endl;
+                	if(searchNode(arr, num)) {
+                    	cout << "node (value=" << num << ") found from hash table" << endl;
+                	}
+                	else cout << "node (value=" << num << ") not found from hash table" << endl;
    
-                clock_t t2 = clock();
-                cout << fixed << showpoint;
-                cout << "Elapsed time=" << setprecision(6) << (t2-t1)*1.0/CLOCKS_PER_SEC << " seconds" << endl;                
-            }  
-            break;
+                	clock_t t2 = clock();
+                	cout << fixed << showpoint;
+                	cout << "Elapsed time=" << setprecision(6) << (t2-t1)*1.0/CLOCKS_PER_SEC << " seconds" << endl;                
+            	}  
+            	break;
                 
-        case 't':
-            {
-                cout << "search a node from linked list:" << endl;
-                cout << "please enter a value:" << endl;
-                cin >> num;
+        	case 't':
+            	{
+                	cout << "search a node from linked list:" << endl;
+                	cout << "please enter a value:" << endl;
+                	cin >> num;
                 
-                clock_t t1;
-                t1 = clock();   
+                	clock_t t1;
+                	t1 = clock();   
                 
-                if(search_node_from_list(head, num)) {
-                    cout << "node (value=" << num << ") found from list" << endl;
-                }
-                else cout << "node (value=" << num << ") not found from list" << endl;
+                	if(search_node_from_list(head, num)) {
+                    	cout << "node (value=" << num << ") found from list" << endl;
+                	}
+                	else cout << "node (value=" << num << ") not found from list" << endl;
    
-                clock_t t2 = clock();
-                cout << fixed << showpoint;
-                cout << "Elapsed time=" << setprecision(6) << (t2-t1)*1.0/CLOCKS_PER_SEC << " seconds" << endl;                    
-            }
-            break;
+                	clock_t t2 = clock();
+                	cout << fixed << showpoint;
+                	cout << "Elapsed time=" << setprecision(6) << (t2-t1)*1.0/CLOCKS_PER_SEC << " seconds" << endl;                    
+            	}
+            	break;
                 
 		case 'p': cout << "print" << endl;
 			printHashTable(arr);
 			break;
 
 		case 'q': cout << "quit" << endl;
-            destroyHashTable(arr);
+            		destroyHashTable(arr);
                 
 			nodePtr = head;
 			while (nodePtr) {
