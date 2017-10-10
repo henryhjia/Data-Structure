@@ -1,7 +1,12 @@
-    #include <iostream>
-    using namespace std;
+#include <iostream>
+using namespace std;
     
-    int main() {
+struct ListNode {
+    int value;
+    ListNode* next;
+};
+
+int main() {
     
     // Linked List
     ListNode *head = nullptr;
