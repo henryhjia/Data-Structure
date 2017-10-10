@@ -24,13 +24,12 @@
         switch (ch) {
             case 'a': 
                 cout << "enter an integer to append:";
-                int value;
-                cin >> value;
+                cin >> val;
 
                 newNode = new ListNode;
                 cout << "node created: 0x" << newNode << endl;
                 
-                newNode->value = value;
+                newNode->value = val;
                 newNode->next = nullptr;
                 if (head == nullptr) {
                     head = newNode;
@@ -50,29 +49,30 @@
                 cout << "enter an integer to insert: " << endl;
                 cin >> val;
                 
-	            ListNode *newNode = nullptr;
-	            newNode = new ListNode(num);
-
+                // always create a new ListNode instance
+	        newNode = new ListNode;
+                newNode->value = val;
+                newNode->next = nullptr;
+                
 	            if (head == nullptr) {
-		            head = newNode;
+		              head = newNode;
 	            }
 	            else {
-		            ListNode *nodePtr = head;
-		            ListNode *prevPtr = nullptr;
-		            while (nodePtr != nullptr && nodePtr->value < newNode->value) {
-			            prevPtr = nodePtr;
-			            nodePtr = nodePtr->next;
-		            }
-		            if (prevPtr == nullptr) {
-			            head = newNode;
-			            newNode->next = nodePtr;
-		            }
-		            else {
-			            prevPtr->next = newNode;
-			            newNode->next = nodePtr;
-		            }
+		              ListNode *nodePtr = head;
+		              ListNode *prevPtr = nullptr;
+		              while (nodePtr != nullptr && nodePtr->value < newNode->value) {
+			                 prevPtr = nodePtr;
+			                 nodePtr = nodePtr->next;
+		              }
+		              if (prevPtr == nullptr) {
+			                 head = newNode;
+			                 newNode->next = nodePtr;
+		              }
+		              else {
+			                 prevPtr->next = newNode;
+			                 newNode->next = nodePtr;
+		              }
 	            }
-
                 break;
                
             case 'd': 
@@ -136,5 +136,5 @@
         }
     } while (ch != 'q');
             
-    return EXIT_SUCCESS;        
+    return EXIT_SUCCESS;          
 }
