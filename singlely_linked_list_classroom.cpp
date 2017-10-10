@@ -50,41 +50,28 @@
                 cout << "enter an integer to insert: " << endl;
                 cin >> val;
                 
-                // always create a new ListNode instance
-                newNode = new ListNode;
-                cout << "node created: 0x" << newNode << endl;
-                newNode->value = val;
-                newNode->next = nullptr;
-               
-                // new single node
-                if(head == nullptr) {
-                    head = newNode;
-                    break;
-                }     
-                
-                // insert at the beginning
-                if(val < head->value) {
-                    newNode->next = head;
-                    head = newNode;
-                    break;
-                }
-                
-                nodePtr = head;
-                while(nodePtr) {
-                    if(nodePtr->value < val && nodePtr->next != nullptr && nodePtr->next->value > val) {
-                        // insert the newNode between nodePtr and nodePtr->next
-                        newNode->next = nodePtr->next;
-                        nodePtr->next = newNode;                                                
-                    }
-                    else if (nodePtr->value < val && nodePtr->next == nullptr) {
-                        // insert at the end
-                        nodePtr->next = newNode;
-                    }
-                    else {     
-                        // move to next node
-                        nodePtr = nodePtr->next;
-                    }
-                }
+	            ListNode *newNode = nullptr;
+	            newNode = new ListNode(num);
+
+	            if (head == nullptr) {
+		            head = newNode;
+	            }
+	            else {
+		            ListNode *nodePtr = head;
+		            ListNode *prevPtr = nullptr;
+		            while (nodePtr != nullptr && nodePtr->value < newNode->value) {
+			            prevPtr = nodePtr;
+			            nodePtr = nodePtr->next;
+		            }
+		            if (prevPtr == nullptr) {
+			            head = newNode;
+			            newNode->next = nodePtr;
+		            }
+		            else {
+			            prevPtr->next = newNode;
+			            newNode->next = nodePtr;
+		            }
+	            }
 
                 break;
                
