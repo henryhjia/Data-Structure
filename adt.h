@@ -14,9 +14,11 @@ MyList
 		void printMyList();
 		bool searchNode(int val);
 		bool isEmpty();
+		void insertHead(int val);
+		void deleteTail();
+		void deleteHead();
 		
-	private:
-	
+	private:	
 		ListNode* head;
 
 };
