@@ -1,4 +1,4 @@
-#ifndef __MYLIST_
+#ifndef _MYLIST_
 #define _MYLIST_
 // adt.h
 MyList
