@@ -6,16 +6,12 @@
 
 class MyQueue : public MyList
 {
-private:
+    private:
 
-public:
-
+    public:
 	MyQueue();
-
 	void enqueue(int num);
 	void dequeue();
-
-
 };
 
 #endif
