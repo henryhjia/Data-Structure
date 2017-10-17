@@ -102,3 +102,76 @@ Person showType: name=Mike age=23
 
 We say the first case is "Polymorphism" because the base class pointer is used to point to the derived class and the method of 
 the derived class showType is executed at run time.  We also call this "dynamic binding", or "run-time binding".
+
+
+#############################
+Multiple inherience problems
+#############################
+If the derived class does not have a function, but the two base classes have it, when calling this function on the
+derived object, there will be a compiler error.
+e.g
+
+class Person
+{
+private:
+	string name;
+	int age;
+	char gender;
+
+public:
+    
+	Person(string n="None", int num=30, char c=' ') {
+		name = n;
+		age = num;
+		gender = c;
+		cout << "Person Constructor" << endl;
+	}  
+	virtual void showType() { cout << "Person showType:" << " name=" << name << " age=" << age << endl; }
+};
+
+class Info
+{
+private:
+	string address;
+public:
+	Info() { cout << "default Info constructor" << endl; }
+	Info(string s) { address = s;  cout << "Info constructor" << endl;  }
+	void showType() { cout << "Info showType:" << endl; }
+	void showAddress() { cout << "address:" << address << endl; }
+};
+
+class Student : public Person, public Info {
+private:
+	int id;
+public:
+	Student(int i) {
+		id = i;
+	}
+
+	Student(int i, string n, int m, char c, string s) : Person(n, m, c), Info(s)
+	{
+		id = i;
+		cout << "Student construcor" << endl;
+	}
+
+	Student() : Person(), Info()
+    {
+		id = -1;
+		cout << "default student constructor" << endl;
+	}
+
+	//void showType() { cout << "Student showType: id=" << id <<  endl; }
+
+};
+
+int main()
+{
+    Student s(12345, "Mike", 23, 'm', "1025 Canyon Run");    
+    s.showType();
+}
+
+Compiler error:
+solution.cc: In function ‘int main()’:
+solution.cc:82:7: error: request for member ‘showType’ is ambiguous
+     s.showType();
+       ^~~~~~~~
