@@ -1,0 +1,78 @@
+############
+constructor
+############
+
+
+#################
+polymorphism
+#################
+
+polymorphism is all about virtual function and use of pointer to the base class towards the derived class.
+e.g.
+
+class Person
+{
+  private:
+	  string name;
+	  int age;
+	  char gender;
+
+  public:
+    
+	  Person(string n="None", int num=30, char c=' ') {
+		  name = n;
+		  age = num;
+		  gender = c;
+		  cout << "Person Constructor" << endl;
+	  }
+    
+	  virtual void showType() { cout << "Person showType:" << " name=" << name << " age=" << age << endl; }    
+    
+ };
+ 
+ 
+class Student : public Person {
+  private:
+	  int id;
+  public:
+	  Student(int i) {
+		  id = i;
+	  }
+
+	  Student(int i, string n, int m, char c) : Person(n, m, c)
+	  {
+		  id = i;
+		  cout << "Student construcor" << endl;
+	  }
+
+	  Student() 
+      {
+		  id = -1;
+		  cout << "default student constructor" << endl;
+	  }
+
+	  void showType() { cout << "Student showType: id=" << id <<  endl; }
+	
+};
+
+int main()
+{
+    Person *p;
+    Student s(12345, "Mike", 23, 'm');
+    
+    p=&s;
+    p->showType();
+}
+ 
+The reuslt is:
+Person Constructor
+Student construcor
+Student showType: id=12345
+
+If we don't have "virtual" keyword in front of showType in the base class Person, the result is:
+Person Constructor
+Student construcor
+Person showType: name=Mike age=23
+
+We say the first case is "Polymorphism" because the base class pointer is used to point to the derived class and the method of 
+the derived class showType is executed at run time.  We also call this "dynamic binding", or "run-time binding".
