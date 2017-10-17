@@ -5,14 +5,12 @@
 
 class MyStack : public MyList
 {
-private:
+    private:
 
-public:
+    public:
 	MyStack();
-
 	void push(int num);
 	void pop();
-
 };
 
 #endif
