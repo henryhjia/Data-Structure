@@ -171,7 +171,7 @@ int main()
 }
 
 Compiler error:
-solution.cc: In function ‘int main()’:
-solution.cc:82:7: error: request for member ‘showType’ is ambiguous
+In function ‘int main()’:
+error: request for member ‘showType’ is ambiguous
      s.showType();
        ^~~~~~~~
