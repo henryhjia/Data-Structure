@@ -19,13 +19,13 @@
 int gi = 20;
 
 void func(int*& p, int v) {
-	  cout << "ptr inside func=" << p << " &gi=" << &gi << endl;
-	  //p = &v;
-    //p = new int;
-    p = &gi;    
-	  cout << "ptr inside func(1)=" << p << " value=" << *p << endl;
-    *p = 50;
-    cout << "ptr inside func(2)=" << p << " value=" << *p << endl;
+	cout << "ptr inside func=" << p << " &gi=" << &gi << endl;
+	//p = &v;
+    	//p = new int;
+    	p = &gi;    
+	cout << "ptr inside func(1)=" << p << " value=" << *p << endl;
+    	*p = 50;
+    	cout << "ptr inside func(2)=" << p << " value=" << *p << endl;
 }
 
 // Output (passing int*)
@@ -36,23 +36,23 @@ void func(int*& p, int v) {
 // ptr after =0x7ffcf33a8dbc value=10 gi=50
 //
 void func(int* p, int v) {
-	  cout << "ptr inside func=" << p << " &gi=" << &gi << endl;
-	  //p = &v;
-    //p = new int;
-    p = &gi;    
-	  cout << "ptr inside func(1)=" << p << " value=" << *p << endl;
-    *p = 50;
-    cout << "ptr inside func(2)=" << p << " value=" << *p << endl;
+	cout << "ptr inside func=" << p << " &gi=" << &gi << endl;
+	//p = &v;
+    	//p = new int;
+    	p = &gi;    
+	cout << "ptr inside func(1)=" << p << " value=" << *p << endl;
+    	*p = 50;
+    	cout << "ptr inside func(2)=" << p << " value=" << *p << endl;
 }
 
 int main() {
-    int val = 10;
-    int *ptr = &val;
+    	int val = 10;
+    	int *ptr = &val;
     
-    cout << "ptr before=" << ptr << " value=" << *ptr << endl;
-    func(ptr, val);
-    cout << "ptr after =" << ptr << " value=" << *ptr << " gi=" << gi << endl;    
+    	cout << "ptr before=" << ptr << " value=" << *ptr << endl;
+    	func(ptr, val);
+    	cout << "ptr after =" << ptr << " value=" << *ptr << " gi=" << gi << endl;    
     
-    return EXIT_SUCCESS;
+    	return EXIT_SUCCESS;
 }
 
