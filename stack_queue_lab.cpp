@@ -1,5 +1,5 @@
 #include "stack.h"
-@include "queue.h"
+#include "queue.h"
 
 using namespace std;
 
