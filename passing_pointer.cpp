@@ -29,11 +29,13 @@ void func(int*& p) {
 
 // e.g. 2:
 void func(int*& p) {
+	int* q = p;
 	cout << "ptr inside func=" << p << endl;	
     	p = new int;    
 	cout << "ptr inside func(1)=" << p << " value=" << *p << endl;
     	*p = 55;
-    	cout << "ptr inside func(2)=" << p << " value=" << *p << endl;
+    	*q = 22;
+    	cout << "ptr inside func(2)=" << p << " value=" << *p << " q=" << q << " *q=" << *q << endl;
 }
 // e.g. 2 output:
 // ptr before=0x7ffc0d0b19ac value=10
