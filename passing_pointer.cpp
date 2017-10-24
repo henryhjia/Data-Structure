@@ -28,6 +28,22 @@ void func(int*& p, int v) {
     	cout << "ptr inside func(2)=" << p << " value=" << *p << endl;
 }
 
+//e.g. 2:
+void func(int*& p, int v) {
+	cout << "ptr inside func=" << p << endl;	
+    	p = new int;    
+	cout << "ptr inside func(1)=" << p << " value=" << *p << endl;
+    	*p = 55;
+    	cout << "ptr inside func(2)=" << p << " value=" << *p << endl;
+}
+// e.g. 2 output:
+// ptr before=0x7ffcda7b599c value=10
+// ptr inside func=0x7ffcda7b599c
+// ptr inside func(1)=0x1676c30 value=0
+// ptr inside func(2)=0x1676c30 value=55
+// ptr after =0x1676c30 value=55
+	
+
 // Output (passing int*)
 // ptr before=0x7ffcf33a8dbc value=10
 // ptr inside func=0x7ffcf33a8dbc &gi=0x6060d0
@@ -44,6 +60,23 @@ void func(int* p, int v) {
     	*p = 50;
     	cout << "ptr inside func(2)=" << p << " value=" << *p << endl;
 }
+
+// e.g. 2:
+void func(int* p, int v) {
+	cout << "ptr inside func=" << p << endl;	
+    	p = new int;    
+	cout << "ptr inside func(1)=" << p << " value=" << *p << endl;
+    	*p = 55;
+    	cout << "ptr inside func(2)=" << p << " value=" << *p << endl;
+}
+
+// e.g. 2. output:
+// ptr before=0x7ffc8d52c2f4 value=10
+// ptr inside func=0x7ffc8d52c2f4
+// ptr inside func(1)=0x1147c30 value=0
+// ptr inside func(2)=0x1147c30 value=55
+// ptr after =0x7ffc8d52c2f4 value=10
+	
 
 int main() {
     	int val = 10;
