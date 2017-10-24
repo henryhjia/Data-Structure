@@ -48,8 +48,6 @@ void func(int*& p) {
 
 void func(int* p) {
 	cout << "ptr inside func=" << p << " &gi=" << &gi << endl;
-	//p = &v;
-    	//p = new int;
     	p = &gi;    
 	cout << "ptr inside func(1)=" << p << " value=" << *p << endl;
     	*p = 50;
