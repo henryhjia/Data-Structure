@@ -19,6 +19,22 @@ void swap(T& a, T& b)
     b = temp;
 }
 
+
+template <class T>
+class MyClass 
+{
+    private:
+        T a;
+    
+    public:
+        MyClass(T b) {
+            a = b;
+        }
+    
+        T get_myvalue() { return a;}
+};
+
+
 int main()
 {
     auto a=10;
@@ -35,4 +51,11 @@ int main()
     string s2="John";
     string s = mymax(s1,s2);
     cout << "max=" << s << endl;
+	
+    MyClass<string> m1("Edward");
+    cout << "value=" << m1.get_myvalue() << endl;
+    
+    MyClass<int> m2(100);
+    cout << "value=" << m2.get_myvalue() << endl;
+	
 }
