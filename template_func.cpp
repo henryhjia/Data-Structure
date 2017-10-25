@@ -9,6 +9,16 @@ T mymax(T i, T j)
 	else return j;
 }
 
+
+template <class T>
+void swap(T& a, T& b) 
+{
+    T temp;
+    temp = a;
+    a = b;
+    b = temp;
+}
+
 int main()
 {
     auto a=10;
