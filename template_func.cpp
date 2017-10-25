@@ -32,6 +32,12 @@ class MyClass
         }
     
         T get_myvalue() { return a;}
+	
+    // Needed for > in mymax template function	
+    friend bool operator>(const MyClass &c1, const MyClass &c2)
+    {
+        return (c1.a > c2.a);
+    }  
 };
 
 
@@ -57,5 +63,8 @@ int main()
     
     MyClass<int> m2(100);
     cout << "value=" << m2.get_myvalue() << endl;
+	
+    MyClass<int> mmax = mymax(m2, m3);
+    cout << "max=" << mmax.get_myvalue() << endl;
 	
 }
