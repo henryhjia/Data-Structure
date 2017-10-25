@@ -30,4 +30,9 @@ int main()
     auto y=4.6;
     auto z = mymax(x,y);
     cout << "max=" << z << endl;
+	
+    string s1="David";
+    string s2="John";
+    string s = mymax(s1,s2);
+    cout << "max=" << s << endl;
 }
