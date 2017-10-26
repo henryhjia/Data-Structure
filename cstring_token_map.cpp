@@ -25,8 +25,7 @@ using namespace std;
 int main() {
     /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
     int a;
-    string line, buffer;
-    string delimeter = " ";
+    string line;
     regex e(" ");
     int n;
     map<int, int> mymap;
@@ -55,7 +54,7 @@ int main() {
                 }
                 count++;
             }
-            //cout << endl;
+
             for(map_iter = mymap.begin(); map_iter != mymap.end(); map_iter++) {
                 cout << map_iter->first << " " << map_iter->second << endl;
             }
