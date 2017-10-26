@@ -53,8 +53,6 @@ int main() {
                     value = stoi(it->str());
                     mymap[key] = value;
                 }
-                //cout << key << " ";
-                //cout << it->str() << " ";
                 count++;
             }
             //cout << endl;
