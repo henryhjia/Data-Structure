@@ -45,7 +45,7 @@ int main()
 	  cout << "Do you want to print array and vector? y/n ";
 	  cin >> ch;
 
-  	if (ch == 'y') {
+  	  if (ch == 'y') {
 		    cout << "print data" << endl;	
 		    // iterator
 
