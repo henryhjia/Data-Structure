@@ -37,6 +37,8 @@ void insertNode(ListNode* v[], ListNode *newNode, int index) {
 	ListNode *nodePtr = v[index];
 	ListNode *prevPtr = nullptr;
         /*
+	The following is correct logic:
+	
 		while (nodePtr != nullptr && nodePtr->value < newNode->value) {                 
 			prevPtr = nodePtr;
 			nodePtr = nodePtr->next;
