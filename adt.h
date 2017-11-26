@@ -1,7 +1,7 @@
 #ifndef _MYLIST_
 #define _MYLIST_
 // adt.h
-MyList
+class MyList
 {
     public:
 	MyList();
