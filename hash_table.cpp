@@ -34,8 +34,8 @@ void insertNode(ListNode* v[], ListNode *newNode, int index) {
 	v[index] = newNode;
     }
     else {
-		ListNode *nodePtr = v[index];
-		ListNode *prevPtr = nullptr;
+	ListNode *nodePtr = v[index];
+	ListNode *prevPtr = nullptr;
         /*
 		while (nodePtr != nullptr && nodePtr->value < newNode->value) {                 
 			prevPtr = nodePtr;
@@ -87,8 +87,8 @@ void printHashTable(ListNode* v[]) {
 }
 
 void deleteNode(ListNode* v[], int val) {   
-    ListNode *prevPtr;
-    ListNode *nodePtr;
+    	ListNode *prevPtr;
+    	ListNode *nodePtr;
     
 	for (int i = 0; i < 10; i++) {
         nodePtr = v[i];   
@@ -232,11 +232,11 @@ void hash_table() {
 	cout << "Week 6: Hash Table" << endl;
 
 	ListNode* arr[10] = {0};
-    ListNode *head = nullptr;
-    ListNode *nodePtr = nullptr;
+    	ListNode *head = nullptr;
+    	ListNode *nodePtr = nullptr;
     
 	int index;
-    int num;
+    	int num;
     
 	char ch = 'q';
 	do {
