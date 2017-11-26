@@ -72,7 +72,7 @@ class Student : public Person {
 	  }
 
 	  Student() 
-      {
+      	  {
 		  id = -1;
 		  cout << "default student constructor" << endl;
 	  }
@@ -155,7 +155,7 @@ public:
 	}
 
 	Student() : Person(), Info()
-    {
+        {
 		id = -1;
 		cout << "default student constructor" << endl;
 	}
