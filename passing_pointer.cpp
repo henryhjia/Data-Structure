@@ -12,6 +12,7 @@
 
 int gi = 20;
 
+// e.g. 1: passing by reference int*& p:
 void func(int*& p) {
 	cout << "ptr inside func=" << p << " &gi=" << &gi << endl;
     	p = &gi;    
@@ -19,7 +20,7 @@ void func(int*& p) {
     	*p = 50;
     	cout << "ptr inside func(2)=" << p << " value=" << *p << endl;
 }
-// Output: (passing int*&)
+// e.g. 1 Output: 
 // ptr before=0x7ffd1c341e14 value=10
 // ptr inside func=0x7ffd1c341e14 &gi=0x6060d0
 // ptr inside func(1)=0x6060d0 value=20
@@ -27,7 +28,7 @@ void func(int*& p) {
 // ptr after =0x6060d0 value=50 gi=50
 //
 
-// e.g. 2:
+// e.g. 2: passing by reference int*& p:
 void func(int*& p) {
 	int* q = p;
 	cout << "ptr inside func=" << p << endl;	
@@ -44,8 +45,8 @@ void func(int*& p) {
 // ptr inside func(2)=0x1302c30 value=55 q=0x7ffc0d0b19ac *q=22
 // ptr after =0x1302c30 value=55
 	
-// Output (passing int*)
 
+// e.g. 3 : passing by value int* p:
 void func(int* p) {
 	cout << "ptr inside func=" << p << " &gi=" << &gi << endl;
     	p = &gi;    
@@ -53,7 +54,7 @@ void func(int* p) {
     	*p = 50;
     	cout << "ptr inside func(2)=" << p << " value=" << *p << endl;
 }
-// output:
+// e.g. 3 output:
 // ptr before=0x7ffcf33a8dbc value=10
 // ptr inside func=0x7ffcf33a8dbc &gi=0x6060d0
 // ptr inside func(1)=0x6060d0 value=20
@@ -61,7 +62,7 @@ void func(int* p) {
 // ptr after =0x7ffcf33a8dbc value=10 gi=50
 //
 
-// e.g. 2:
+// e.g. 4: passing by value int* p:
 void func(int* p) {
 	cout << "ptr inside func=" << p << endl;	
 	int *q = p;
@@ -72,7 +73,7 @@ void func(int* p) {
     	cout << "ptr inside func(2)=" << p << " value=" << *p << " q=" << q << " *q=" << *q << endl;
 }
 
-// e.g. 2. output:
+// e.g. 4. output:
 // ptr before=0x7ffccaaf4d84 value=10
 // ptr inside func=0x7ffccaaf4d84
 // ptr inside func(1)=0xeedc30 value=0
