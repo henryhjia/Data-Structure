@@ -66,7 +66,7 @@ MyQueue::ListNode* MyQueue::pop()
     }
 }
 
-void MyQueue::printMyQueue()
+void MyQueue::print()
 {
     ListNode *nodePtr = head;
     cout << "node value= ";
