@@ -18,7 +18,7 @@ class MyQueue
 
         void push(int val);
         ListNode* pop();
-        void printMyQueue();
+        void print();
 
     private:
 
