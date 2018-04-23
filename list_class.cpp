@@ -69,11 +69,19 @@ void MyList::insertTail(int val)
         return;
     }
 
+    // method 1
     while(nodePtr->next != nullptr) {
         nodePtr = nodePtr->next;
     }
     nodePtr->next = newPtr;
 
+    // method 2
+    //while(nodePtr != nullptr) {
+    //    prevPtr = nodePtr;
+    //    nodePtr = nodePtr->next;
+    //}
+    // reaches end, prevPtr is the last node
+    //prevPtr->next = newPtr;
 }
 
 void MyList::deleteTail()
