@@ -1,7 +1,7 @@
 #ifndef _MYSTACK_
 #define _MYSTACK_
 #pragma once
-#include "listADT.h"
+#include "list_class.h"
 
 class MyStack : public MyList
 {
@@ -10,7 +10,7 @@ class MyStack : public MyList
     public:
 	MyStack();
 	void push(int num);
-	void pop();
+	MyList::ListNode* pop();
 };
 
 #endif

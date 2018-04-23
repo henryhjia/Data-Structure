@@ -1,4 +1,4 @@
-#include "stack.h"
+#include "stack_class.h"
 
 MyStack::MyStack()
 {
@@ -10,7 +10,7 @@ void MyStack::push(int num)
 	insertHead(num);
 }
 
-void MyStack::pop()
+MyList::ListNode* MyStack::pop()
 {
-	deleteHead();
+	return deleteHead();
 }
