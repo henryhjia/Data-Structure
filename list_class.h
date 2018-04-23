@@ -18,8 +18,10 @@ class MyList
         bool isEmpty();
 
         void insertHead(int val);
-        void deleteTail();
         void deleteHead();
+        void insertTail(int val);
+        void deleteTail();
+        
 
     private:
 
