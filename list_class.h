@@ -11,6 +11,11 @@ class MyList
         MyList();
         ~MyList();
 
+        struct ListNode {
+            int value;
+            ListNode* next;
+        };
+    
         void insertNode(int val);
         void deleteNode(int val);
         void printMyList();
@@ -18,17 +23,12 @@ class MyList
         bool isEmpty();
 
         void insertHead(int val);
-        void deleteHead();
+        ListNode* deleteHead();
         void insertTail(int val);
-        void deleteTail();
+        ListNode* deleteTail();
         
 
     private:
-
-        struct ListNode {
-            int value;
-            ListNode* next;
-        };
 
         ListNode* head;
 };

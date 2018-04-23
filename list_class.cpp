@@ -33,26 +33,26 @@ void MyList::insertHead(int val)
     }
 }
 
-void MyList::deleteHead()
+MyList::ListNode* MyList::deleteHead()
 {
-    ListNode *nodePtr;
-
+    ListNode *nodePtr = nullPtr;
+    ListNode *retPtr = nullptr;
+  
     if (head) {
         if (head->next) {
             nodePtr = head->next;
-            cout << "Delete node=0x" << head << " value=" << head->value << endl;
-            delete head;
+            retPtr = head;
             head = nodePtr;
         }
         else {
-            cout << "Delete node=0x" << head << " value=" << head->value << endl;
-            delete head;
+            retPtr = head;
             head = nullptr;
         }
     }
     else {
         cout << "Empty list, nothing to delete" << endl;
     }
+    return retPtr;
 }
 
 void MyList::insertTail(int val)
@@ -84,11 +84,12 @@ void MyList::insertTail(int val)
     //prevPtr->next = newPtr;
 }
 
-void MyList::deleteTail()
+MyList::ListNode* MyList::deleteTail()
 {
     ListNode *nodePtr = head;
     ListNode *prevPtr = nullptr;
-
+    ListNode *retPtr = nullptr;
+  
     if (head == nullptr) {
         cout << "Empty list, nothing to delete" << endl;
         return;
@@ -96,10 +97,9 @@ void MyList::deleteTail()
 
     if(head->next == nullptr) {
         // head only
-        cout << "delete the head:" << head << endl;
-        delete head;
+        retPtr = head;
         head = nullptr;
-        return;
+        return retPtr;
     }
 
     while (nodePtr->next != nullptr) {
@@ -109,9 +109,10 @@ void MyList::deleteTail()
 
     // Last node
     prevPtr->next = nullptr;
-    cout << "Delete node=0x" << nodePtr << " value=" << nodePtr->value << endl;
-    delete nodePtr;
+    retPtr = nodePtr;
     nodePtr = nullptr;
+  
+    return retPtr;
 }
 
 void MyList::insertNode(int val)
