@@ -1,15 +1,15 @@
 #include <iostream>
-#include "queue_class.h"
+#include "stack_class.h"
 
 using namespace std;
 
 int main() {
 
-    MyQueue q;
+    MyStack s;
 
     int value = 0;
     char ch = 'q';
-    MyQueue::ListNode* nodePtr;
+    MyStack::ListNode* nodePtr;
 
     do {
 
@@ -26,22 +26,25 @@ int main() {
             case 'a':
                 cout << "Enter an integer to push to queue:" << endl;
                 cin >> value;
-                q.push(value);
+                s.push(value);
                 break;
 
             case 'd':
                 cout << "pop a queue" << endl;
-                nodePtr = q.pop();
+                nodePtr = s.pop();
                 if(nodePtr != nullptr) {
                     cout << "poped node= " << nodePtr->value << endl;
                     cout << "delte the poped node=" << nodePtr << endl;
                     delete nodePtr;
                 }
+                else {
+                    cout << "empty stack, nothing to delete" << endl;
+                }
                 break;
 
             case 'p':
                 cout << "print queue" << endl;
-                q.print();
+                s.print();
                 break;
 
             case 'q':
@@ -52,8 +55,7 @@ int main() {
                 cout << "invalid entry" << endl;
             }
 
-        } while (ch != 'q');                        
+        } while (ch != 'q');
 
         return 0;
 }
-~  
