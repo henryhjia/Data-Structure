@@ -32,9 +32,11 @@ int main() {
             case 'd':
                 cout << "pop a queue" << endl;
                 nodePtr = q.pop();
-                cout << "poped node= " << nodePtr->value << endl;
-                cout << "delte the poped node=" << nodePtr << endl;
-                delete nodePtr;
+                if(nodePtr != nullptr) {
+                    cout << "poped node= " << nodePtr->value << endl;
+                    cout << "delte the poped node=" << nodePtr << endl;
+                    delete nodePtr;
+                }
                 break;
 
             case 'p':
