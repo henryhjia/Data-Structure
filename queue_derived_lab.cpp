@@ -10,17 +10,16 @@ int main() {
         q.enqueue(10);
         q.enqueue(20);
         q.enqueue(30);
-        q.printMyList();
+        q.print();
 
         q.dequeue();
-        q.printMyList();
+        q.print();
 
         q.dequeue();
-        q.printMyList();
+        q.print();
 
         q.dequeue();
-        q.printMyList();
+        q.print();
 
-        //system("pause");
         return 0;
 }
